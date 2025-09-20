@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IMPULSO JADE – Panaderías</title>
+  <style>
+    /* Reset básico */
+    * {
+      margin: 0; padding: 0;
+      box-sizing: border-box;
+      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    }
+    body {
+      background: #e7e2d2;
+      padding-top: 120px; /* espacio para header fijo */
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* Header fijo */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      width: 100%;
+      background: #ffffff;
+      display: flex;                        
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;  /* tamaño normal */
+      border-bottom: 3px solid #c49a6c; /* tono panadería */
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease; /* animación */
+    }
+
+    /* Estado reducido al hacer scroll */
+    header.shrink {
+      padding: 8px 30px; 
+    }
+
+    header .logo img {
+      height: 100px;  /* normal */
+      max-width: 100%;
+      transition: height 0.3s ease;
+    }
+    header.shrink .logo img {
+      height: 70px; /* reducido */
+    }
+
+    nav {
+      margin-top: 10px;
+    }
+    nav a {
+      margin-left: 5px;
+      padding: 8px 15px;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+    .amarillo { background: #c49a6c; color: #ffffff; }
+    .azul { background: #4b4d4e; color: white; }
+    .rojo { background: #7b3f00; color: white; }
+
+    /* Banner */
+    .banner {
+      width: 100%;
+      height: 500px;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 40px 20px;
+      position: relative;
+      background: 
+        linear-gradient(rgba(0, 0, 0, 0.7), rgba(5, 5, 5, 0.3)), 
+        url(imagenes/IMAGEN-2-HORNITOS.webp);
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+    }
+    .banner h3 {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+      transition: color 0.3s ease, text-shadow 0.3s ease;
+    }
+    .banner p {
+      font-size: 1.2rem;
+      margin-bottom: 25px;
+      transition: color 0.3s ease, text-shadow 0.3s ease;
+    }
+
+    /* Hover sobre el banner que afecta a ambos textos */
+    .banner:hover h3,
+    .banner:hover p {
+      color: rgba(255, 255, 255, 0.7);
+      text-shadow: 0 0 10px rgba(0,0,0,0.6);
+    }
+
+    .iconos {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      display: flex;
+      gap: 10px; 
+    }
+    .iconos img {
+      width: 60px;
+      height: auto;
+      cursor: none;
+    }
+
+    /* Contenedor general */
+    .container {
+      margin-left: 200px;
+      margin-right: 200px;
+    }
+
+    /* Secciones */
+    section {
+      padding: 50px 20px;
+      margin-bottom: 40px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    section h2 {
+      margin-bottom: 20px;
+      font-size: 3rem;
+      color: #965812;
+    }
+
+    .about-us {
+      display: flex;
+      justify-content: space-between;
+      gap: 30px;
+      align-items: center;
+      margin: 20px auto;
+      text-align: left;
+    }
+    .about-us .content, .about-us .image {
+      width: 48%;
+    }
+    .about-us img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    /* Testimonios */
+    .testimonials {
+      background: #fff8f0;
+      padding: 50px 20px;
+      border-radius: 0px;
+      box-shadow: 0px 5px #333;
+    }
+    .testimonial {
+      max-width: 600px;
+      margin: 20px auto;
+      font-style: italic;
+    }
+
+    /* Contacto */
+    #contacto {
+      background: #ffffff;
+      padding: 50px 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      margin-left: 200p;x
+      margin-right: 200px;
+      margin-top: 30px;
+      margin-bottom: 30px;
+    }
+
+    /* Footer */
+    footer {
+      background: #7b3f00;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    /* Responsivo */
+    @media (max-width: 1200px) {
+      .container {
+        margin-left: 50px;
+        margin-right: 50px;
+      }
+    }
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: center;
+      }
+      header .logo img {
+        height: 120px;
+      }
+      nav a {
+        display: inline-block;
+        margin: 5px;
+      }
+      .about-us {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+      .about-us .content, .about-us .image {
+        width: 90%;
+      }
+      .container {
+        margin-left: 20px;
+        margin-right: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <img src="imagenes/jade_dfini-removebg-preview.png" alt="logo impulsoJADE ">
+    </div>
+    <nav class="cta-buttons">
+      <a href="#asesoria" class="btn amarillo">Servicios</a>
+      <a href="#nosotros" class="btn azul">Quiénes Somos</a>
+      <a href="#contacto" class="btn rojo">Contáctanos</a>
+    </nav>
+  </header>
+
+  <!-- Banner -->
+  <section id="banner" class="banner">
+    <h3>Transformamos tu tradición en éxito moderno</h3>
+    <p>Asesoría, marketing y capacitación para panaderías</p>
+    <div class="iconos">
+      <img src="imagenes/pan-removebg-preview.png" alt="decoración pan">
+      <img src="imagenes/trigo-removebg-preview.png" alt="decoración trigo">
+      <img src="imagenes/cafe-removebg-preview.png" alt="decoración café">
+    </div>
+  </section>
+
+  <!-- Contenedor -->
+  <div class="container">
+    <!-- Quiénes Somos -->
+    <section id="nosotros" class="about-us">
+      <div class="content">
+        <h2>Quiénes Somos</h2>
+        <p>En <strong>IMPULSO JADE</strong> apoyamos a panaderías y negocios de repostería a crecer, modernizarse y aumentar su rentabilidad. 
+           Nos enfocamos en brindar asesoría integral, capacitación y estrategias digitales que fortalecen la tradición de la panadería 
+           mientras la adaptamos a las nuevas demandas del mercado.</p>
+      </div>
+      <div class="image">
+        <img src="imagenes/banner.jpg" alt="Panadería en funcionamiento">
+      </div>
+    </section>
+   
+    <!-- Asesoría Empresarial -->
+    <section id="asesoria" class="about-us">
+      <div class="content">
+        <h2>Asesoría Empresarial</h2>
+        <p>Ofrecemos acompañamiento especializado en gestión de costos, planeación de producción, control de inventarios 
+           y administración financiera para panaderías.</p>
+      </div>
+      <div class="image">
+        <img src="imagenes/asesoria_panaderia.jpg" alt="Asesoría empresarial para panaderías">
+      </div>
+    </section>
+
+    <!-- Marketing Digital -->
+    <section id="marketing" class="about-us">
+      <div class="image">
+        <img src="imagenes/marketing_panaderia.jpg" alt="Marketing digital panaderías">
+      </div>
+      <div class="content">
+        <h2>Marketing Digital</h2>
+        <p>Impulsamos la visibilidad de tu panadería en redes sociales, desarrollamos campañas en línea y 
+           estrategias para atraer más clientes en tu zona.</p>
+      </div>
+    </section>
+
+    <!-- Capacitación -->
+    <section id="capacitacion" class="about-us">
+      <div class="content">
+        <h2>Capacitación</h2>
+        <p>Brindamos talleres y cursos en temas clave como nuevas técnicas de panificación, control de calidad, 
+           atención al cliente y liderazgo de equipos de trabajo.</p>
+      </div>
+      <div class="image">
+        <img src="imagenes/capacitacion_panaderia.jpg" alt="Capacitación en panificación">
+      </div>
+    </section>
+
+    <!-- Red de Aliados -->
+    <section id="aliados" class="about-us">
+      <div class="image">
+        <img src="imagenes/aliados_panaderia.jpg" alt="Red de aliados panaderos">
+      </div>
+      <div class="content">
+        <h2>Red de Aliados</h2>
+        <p>Conectamos a tu panadería con proveedores de insumos, maquinaria y distribuidores, creando 
+           oportunidades de crecimiento conjunto en el sector panadero.</p>
+      </div>
+    </section>
+  </div>
+
+   <!-- Testimonios -->
+    <section class="testimonials">
+      <h2>Testimonios</h2>
+      <div class="testimonial">"Gracias a IMPULSO JADE logramos mejorar el control de costos en nuestra panadería 
+        y aumentar las ganancias mensuales." – <b>Panadería El Trigal</b></div>
+      <div class="testimonial">"La capacitación en nuevas técnicas de panificación nos permitió ampliar nuestro 
+        catálogo de productos y atraer más clientes." – <b>Panadería Dulce Hogar</b></div>
+    </section>
+    
+    <!-- Contacto -->
+    <section id="contacto">
+      <h2>Contáctanos</h2>
+      <p>¿Quieres que tu panadería crezca con nosotros? Escríbenos:</p>
+      <p>Email: <a href="mailto:contacto@impulsojade.com">contacto@impulsojade.com</a></p>
+      <p>Teléfono: +57 300 123 4567</p>
+    </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 IMPULSO JADE – Impulsando Panaderías. Todos los derechos reservados.</p>
+  </footer>
+
+  <!-- Script shrink -->
+  <script>
+    window.addEventListener("scroll", function() {
+      const header = document.querySelector("header");
+      if (window.scrollY > 50) {
+        header.classList.add("shrink");
+      } else {
+        header.classList.remove("shrink");
+      }
+    });
+  </script>
+</body>
+</html>
