@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>IMPULSO JADE – Panaderías</title>
+  <title>SERFI – Cambio de Bonos</title>
   <style>
     /* Reset básico */
     * {
@@ -29,24 +29,21 @@
       display: flex;                        
       justify-content: space-between;
       align-items: center;
-      padding: 20px 40px;  /* tamaño normal */
-      border-bottom: 3px solid #c49a6c; /* tono panadería */
+      padding: 20px 40px;  
+      border-bottom: 3px solid #39FF14; /* tono verde neón */
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      transition: all 0.3s ease; /* animación */
+      transition: all 0.3s ease; 
     }
-
-    /* Estado reducido al hacer scroll */
     header.shrink {
       padding: 8px 30px; 
     }
-
     header .logo img {
-      height: 100px;  /* normal */
+      height: 100px;  
       max-width: 100%;
       transition: height 0.3s ease;
     }
     header.shrink .logo img {
-      height: 70px; /* reducido */
+      height: 70px; 
     }
 
     nav {
@@ -59,7 +56,7 @@
       border-radius: 5px;
       font-weight: bold;
     }
-    .amarillo { background: #c49a6c; color: #ffffff; }
+    .amarillo { background: #39FF14; color: #000; }
     .azul { background: #4b4d4e; color: white; }
     .rojo { background: #7b3f00; color: white; }
 
@@ -92,14 +89,11 @@
       margin-bottom: 25px;
       transition: color 0.3s ease, text-shadow 0.3s ease;
     }
-
-    /* Hover sobre el banner que afecta a ambos textos */
     .banner:hover h3,
     .banner:hover p {
       color: rgba(255, 255, 255, 0.7);
       text-shadow: 0 0 10px rgba(0,0,0,0.6);
     }
-
     .iconos {
       position: absolute;
       bottom: 10px;
@@ -110,7 +104,6 @@
     .iconos img {
       width: 60px;
       height: auto;
-      cursor: none;
     }
 
     /* Contenedor general */
@@ -130,7 +123,7 @@
     section h2 {
       margin-bottom: 20px;
       font-size: 3rem;
-      color: #965812;
+      color: #39FF14;
     }
 
     .about-us {
@@ -147,6 +140,50 @@
     .about-us img {
       width: 100%;
       border-radius: 10px;
+    }
+
+    /* Servicios */
+    .services {
+      background: #fff;
+      padding: 50px 20px;
+      border-radius: 10px;
+      margin: 40px auto;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .services h2 {
+      margin-bottom: 40px;
+      font-size: 2.5rem;
+      color: #39FF14;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+    .service {
+      display: flex;
+      align-items: center;
+      padding: 20px;
+      background: #f9f9f9;
+      border-radius: 10px;
+      box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+    }
+    .service .icon {
+      flex: 0 0 60px;
+      margin-right: 15px;
+    }
+    .service .icon img {
+      width: 60px;
+      height: auto;
+    }
+    .service .text {
+      flex: 1;
+      text-align: left;
+    }
+    .service h3 {
+      font-size: 1rem;
+      color: #333;
     }
 
     /* Testimonios */
@@ -168,15 +205,13 @@
       padding: 50px 20px;
       border-radius: 10px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      margin-left: 200p;x
-      margin-right: 200px;
       margin-top: 30px;
       margin-bottom: 30px;
     }
 
     /* Footer */
     footer {
-      background: #7b3f00;
+      background: #000;
       color: white;
       text-align: center;
       padding: 20px;
@@ -189,29 +224,21 @@
         margin-right: 50px;
       }
     }
-    @media (max-width: 768px) {
-      header {
+    @media (max-width: 900px) {
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 600px) {
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+      .service {
         flex-direction: column;
-        align-items: center;
-      }
-      header .logo img {
-        height: 120px;
-      }
-      nav a {
-        display: inline-block;
-        margin: 5px;
-      }
-      .about-us {
-        flex-direction: column;
-        align-items: center;
         text-align: center;
       }
-      .about-us .content, .about-us .image {
-        width: 90%;
-      }
-      .container {
-        margin-left: 20px;
-        margin-right: 20px;
+      .service .icon {
+        margin: 0 0 10px 0;
       }
     }
   </style>
@@ -224,7 +251,7 @@
       <img src="imagenes/logoo1.png" alt="logo serfi">
     </div>
     <nav class="cta-buttons">
-      <a href="#asesoria" class="btn amarillo">Servicios</a>
+      <a href="#servicios" class="btn amarillo">Servicios</a>
       <a href="#nosotros" class="btn azul">Quiénes Somos</a>
       <a href="#contacto" class="btn rojo">Contáctanos</a>
     </nav>
@@ -232,12 +259,12 @@
 
   <!-- Banner -->
   <section id="banner" class="banner">
-    <h3>tus targetas, tu dinero al instante</h3>
-    <p>Vende tus tarjetas de regalo al instante, seguro y sin complicaciones.</p>
+    <h3>Tus tarjetas, tu dinero al instante</h3>
+    <p>Vende tus bonos y tarjetas de regalo fácil, rápido y seguro.</p>
     <div class="iconos">
-      <img src="imagenes/pan-removebg-preview.png" alt="decoración pan">
-      <img src="imagenes/trigo-removebg-preview.png" alt="decoración trigo">
-      <img src="imagenes/cafe-removebg-preview.png" alt="decoración café">
+      <img src="imagenes/icono1.png" alt="icono1">
+      <img src="imagenes/icono2.png" alt="icono2">
+      <img src="imagenes/icono3.png" alt="icono3">
     </div>
   </section>
 
@@ -247,60 +274,41 @@
     <section id="nosotros" class="about-us">
       <div class="content">
         <h2>Quiénes Somos</h2>
-        <p>En <strong>IMPULSO JADE</strong> apoyamos a panaderías y negocios de repostería a crecer, modernizarse y aumentar su rentabilidad. 
-           Nos enfocamos en brindar asesoría integral, capacitación y estrategias digitales que fortalecen la tradición de la panadería 
-           mientras la adaptamos a las nuevas demandas del mercado.</p>
+        <p>Respaldamos el capital y el tiempo de nuestros clientes con seriedad y responsabilidad. Nuestra trayectoria en el sector financiero y comercial ha consolidado nuestro nombre y presencia en diferentes canales, pero es la confianza de nuestra comunidad lo que fortalece a SERFI como una marca estable, reconocida y en constante crecimiento.</p>
       </div>
       <div class="image">
-        <img src="imagenes/banner.jpg" alt="Panadería en funcionamiento">
+        <img src="imagenes/banner.jpg" alt="Quiénes Somos">
       </div>
     </section>
    
-    <!-- Asesoría Empresarial -->
-    <section id="asesoria" class="about-us">
-      <div class="content">
-        <h2>Asesoría Empresarial</h2>
-        <p>Ofrecemos acompañamiento especializado en gestión de costos, planeación de producción, control de inventarios 
-           y administración financiera para panaderías.</p>
-      </div>
-      <div class="image">
-        <img src="imagenes/asesoria_panaderia.jpg" alt="Asesoría empresarial para panaderías">
-      </div>
-    </section>
-
-    <!-- Marketing Digital -->
-    <section id="marketing" class="about-us">
-      <div class="image">
-        <img src="imagenes/marketing_panaderia.jpg" alt="Marketing digital panaderías">
-      </div>
-      <div class="content">
-        <h2>Marketing Digital</h2>
-        <p>Impulsamos la visibilidad de tu panadería en redes sociales, desarrollamos campañas en línea y 
-           estrategias para atraer más clientes en tu zona.</p>
-      </div>
-    </section>
-
-    <!-- Capacitación -->
-    <section id="capacitacion" class="about-us">
-      <div class="content">
-        <h2>Capacitación</h2>
-        <p>Brindamos talleres y cursos en temas clave como nuevas técnicas de panificación, control de calidad, 
-           atención al cliente y liderazgo de equipos de trabajo.</p>
-      </div>
-      <div class="image">
-        <img src="imagenes/capacitacion_panaderia.jpg" alt="Capacitación en panificación">
-      </div>
-    </section>
-
-    <!-- Red de Aliados -->
-    <section id="aliados" class="about-us">
-      <div class="image">
-        <img src="imagenes/aliados_panaderia.jpg" alt="Red de aliados panaderos">
-      </div>
-      <div class="content">
-        <h2>Red de Aliados</h2>
-        <p>Conectamos a tu panadería con proveedores de insumos, maquinaria y distribuidores, creando 
-           oportunidades de crecimiento conjunto en el sector panadero.</p>
+    <!-- Servicios -->
+    <section id="servicios" class="services">
+      <h2>Servicios</h2>
+      <div class="services-grid">
+        <div class="service">
+          <div class="icon"><img src="imagenes/icono_sodexo.png" alt="Sodexo"></div>
+          <div class="text"><h3>CAMBIO DE BONOS SODEXO, PLUXE POR EFECTIVO.</h3></div>
+        </div>
+        <div class="service">
+          <div class="icon"><img src="imagenes/icono_bigpass.png" alt="Big Pass"></div>
+          <div class="text"><h3>CAMBIO DE BONOS BIG PASS POR EFECTIVO.</h3></div>
+        </div>
+        <div class="service">
+          <div class="icon"><img src="imagenes/icono_jumbo.png" alt="Jumbo"></div>
+          <div class="text"><h3>CAMBIO DE BONOS JUMBO POR EFECTIVO.</h3></div>
+        </div>
+        <div class="service">
+          <div class="icon"><img src="imagenes/icono_alkosto.png" alt="Alkosto"></div>
+          <div class="text"><h3>CAMBIO DE BONOS ALKOSTO POR EFECTIVO.</h3></div>
+        </div>
+        <div class="service">
+          <div class="icon"><img src="imagenes/icono_exito.png" alt="Éxito"></div>
+          <div class="text"><h3>CAMBIO DE BONOS (TARJETA REGALO) ÉXITO.</h3></div>
+        </div>
+        <div class="service">
+          <div class="icon"><img src="imagenes/icono_olimpica.png" alt="Olímpica"></div>
+          <div class="text"><h3>CAMBIO DE BONOS OLÍMPICA.</h3></div>
+        </div>
       </div>
     </section>
   </div>
@@ -308,23 +316,21 @@
    <!-- Testimonios -->
     <section class="testimonials">
       <h2>Testimonios</h2>
-      <div class="testimonial">"Gracias a IMPULSO JADE logramos mejorar el control de costos en nuestra panadería 
-        y aumentar las ganancias mensuales." – <b>Panadería El Trigal</b></div>
-      <div class="testimonial">"La capacitación en nuevas técnicas de panificación nos permitió ampliar nuestro 
-        catálogo de productos y atraer más clientes." – <b>Panadería Dulce Hogar</b></div>
+      <div class="testimonial">"Gracias a SERFI pude cambiar mis bonos rápidamente y con total confianza." – <b>Cliente satisfecho</b></div>
+      <div class="testimonial">"Un servicio rápido, seguro y transparente. 100% recomendado." – <b>Usuario frecuente</b></div>
     </section>
     
     <!-- Contacto -->
     <section id="contacto">
       <h2>Contáctanos</h2>
-      <p>¿Quieres que tu panadería crezca con nosotros? Escríbenos:</p>
-      <p>Email: <a href="mailto:contacto@impulsojade.com">contacto@impulsojade.com</a></p>
+      <p>¿Quieres cambiar tus bonos? Escríbenos:</p>
+      <p>Email: <a href="mailto:contacto@serfi.com">contacto@serfi.com</a></p>
       <p>Teléfono: +57 300 123 4567</p>
     </section>
 
   <!-- Footer -->
   <footer>
-    <p>&copy; 2025 IMPULSO JADE – Impulsando Panaderías. Todos los derechos reservados.</p>
+    <p>&copy; 2025 SERFI – Cambio de Bonos. Todos los derechos reservados.</p>
   </footer>
 
   <!-- Script shrink -->
@@ -340,8 +346,6 @@
   </script>
 </body>
 </html>
-
-
 
 
 
