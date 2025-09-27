@@ -9,11 +9,11 @@
     * {
       margin: 0; padding: 0;
       box-sizing: border-box;
-      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+      font-family: 'Trebuchet MS', Arial, sans-serif;
     }
     body {
       background: #e7e2d2;
-      padding-top: 120px; /* espacio para header fijo */
+      padding-top: 120px;
       color: #333;
       line-height: 1.6;
     }
@@ -21,39 +21,24 @@
     /* Header fijo */
     header {
       position: fixed;
-      top: 0;
-      left: 0;
+      top: 0; left: 0;
       z-index: 1000;
       width: 100%;
       background: #000000;
-      display: flex;                        
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 40px;  
-      border-bottom: 3px solid #39FF14; /* tono verde neón */
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      transition: all 0.3s ease; 
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 20px 40px;
+      border-bottom: 3px solid #39FF14;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
     }
-    header.shrink {
-      padding: 8px 30px; 
-    }
+    header.shrink { padding: 8px 30px; }
     header .logo img {
-      height: 100px;  
-      max-width: 100%;
-      transition: height 0.3s ease;
+      height: 100px; max-width: 100%; transition: height 0.3s ease;
     }
-    header.shrink .logo img {
-      height: 70px; 
-    }
-
-    nav {
-      margin-top: 10px;
-    }
+    header.shrink .logo img { height: 70px; }
     nav a {
-      margin-left: 5px;
-      padding: 8px 15px;
-      text-decoration: none;
-      border-radius: 5px;
+      margin-left: 5px; padding: 8px 15px;
+      text-decoration: none; border-radius: 5px;
       font-weight: bold;
     }
     .amarillo { background: #39FF14; color: #000; }
@@ -62,188 +47,87 @@
 
     /* Banner */
     .banner {
-      width: 100%;
-      height: 500px;
+      width: 100%; height: 500px;
       color: white;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 40px 20px;
+      display: flex; flex-direction: column;
+      justify-content: center; align-items: center;
+      text-align: center; padding: 40px 20px;
       position: relative;
-      background: 
-        linear-gradient(rgba(0, 0, 0, 0.7), rgba(5, 5, 5, 0.3)), 
-        url(imagenes/Image1.jpg);
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-position: center;
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(5, 5, 5, 0.3)), url(imagenes/Image1.jpg);
+      background-repeat: no-repeat; background-size: cover; background-position: center;
     }
-    .banner h3 {
-      font-size: 2.5rem;
-      margin-bottom: 15px;
-      transition: color 0.3s ease, text-shadow 0.3s ease;
-    }
-    .banner p {
-      font-size: 1.2rem;
-      margin-bottom: 25px;
-      transition: color 0.3s ease, text-shadow 0.3s ease;
-    }
-    .banner:hover h3,
-    .banner:hover p {
-      color: rgba(255, 255, 255, 0.7);
-      text-shadow: 0 0 10px rgba(0,0,0,0.6);
-    }
-    .iconos {
-      position: absolute;
-      bottom: 10px;
-      right: 10px;
-      display: flex;
-      gap: 10px; 
-    }
-    .iconos img {
-      width: 60px;
-      height: auto;
-    }
+    .banner h3 { font-size: 2.5rem; margin-bottom: 15px; }
+    .banner p { font-size: 1.2rem; margin-bottom: 25px; }
+    .iconos { position: absolute; bottom: 10px; right: 10px; display: flex; gap: 10px; }
+    .iconos img { width: 60px; }
 
-    /* Contenedor general */
-    .container {
-      margin-left: 200px;
-      margin-right: 200px;
-    }
+    /* Contenedor */
+    .container { margin: 0 auto; max-width: 1200px; padding: 0 20px; }
 
     /* Secciones */
     section {
-      padding: 50px 20px;
-      margin-bottom: 40px;
-      background: #fff;
-      border-radius: 10px;
+      padding: 50px 20px; margin-bottom: 40px;
+      background: #fff; border-radius: 10px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
-    section h2 {
-      margin-bottom: 20px;
-      font-size: 3rem;
-      color: #39FF14;
-    }
+    section h2 { margin-bottom: 20px; font-size: 2.5rem; color: #39FF14; text-align: center; }
 
-    .about-us {
-      display: flex;
-      justify-content: space-between;
-      gap: 30px;
-      align-items: center;
-      margin: 20px auto;
-      text-align: left;
-    }
-    .about-us .content, .about-us .image {
-      width: 48%;
-    }
-    .about-us img {
-      width: 100%;
-      border-radius: 10px;
-    }
+    /* Quiénes somos */
+    .about-us { display: flex; flex-wrap: wrap; gap: 30px; align-items: center; }
+    .about-us .content, .about-us .image { flex: 1 1 48%; }
+    .about-us img { width: 100%; border-radius: 10px; }
 
     /* Servicios */
-    .services {
-      background: #fff;
-      padding: 50px 20px;
-      border-radius: 10px;
-      margin: 40px auto;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      text-align: center;
+    .services { background: #fff; border-radius: 10px; margin: 40px auto; text-align: center; }
+    .services h3 { margin-bottom: 20px; font-size: 1.8rem; color: #333; }
+    .carousel {
+      position: relative; overflow: hidden;
+      width: 100%; margin: 20px 0;
     }
-    .services h2 {
-      margin-bottom: 40px;
-      font-size: 2.5rem;
-      color: #39FF14;
+    .carousel-track {
+      display: flex; gap: 20px;
+      animation: scroll 40s linear infinite;
     }
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 30px;
-    }
+    .carousel:hover .carousel-track { animation-play-state: paused; }
     .service {
-      display: flex;
-      align-items: center;
-      padding: 20px;
-      background: #f9f9f9;
-      border-radius: 10px;
-      box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+      flex: 0 0 250px;
+      padding: 20px; background: #f9f9f9;
+      border-radius: 10px; box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
     }
-    .service .icon {
-      flex: 0 0 60px;
-      margin-right: 15px;
+    .service:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     }
-    .service .icon img {
-      width: 60px;
-      height: auto;
-    }
-    .service .text {
-      flex: 1;
-      text-align: left;
-    }
-    .service h3 {
-      font-size: 1rem;
-      color: #333;
+    .service img { width: 60px; margin-bottom: 10px; }
+    .service h4 { font-size: 1rem; color: #333; }
+
+    @keyframes scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
     }
 
     /* Testimonios */
-    .testimonials {
-      background: #fff8f0;
-      padding: 50px 20px;
-      border-radius: 0px;
-      box-shadow: 0px 5px #333;
-    }
-    .testimonial {
-      max-width: 600px;
-      margin: 20px auto;
-      font-style: italic;
-    }
+    .testimonials { background: #fff8f0; box-shadow: 0px 5px #333; }
+    .testimonial { max-width: 600px; margin: 20px auto; font-style: italic; }
 
     /* Contacto */
-    #contacto {
-      background: #ffffff;
-      padding: 50px 20px;
-      border-radius: 10px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      margin-top: 30px;
-      margin-bottom: 30px;
-    }
+    #contacto { background: #ffffff; margin-top: 30px; }
 
     /* Footer */
-    footer {
-      background: #000;
-      color: white;
-      text-align: center;
-      padding: 20px;
-    }
+    footer { background: #000; color: white; text-align: center; padding: 20px; }
 
-    /* Responsivo */
-    @media (max-width: 1200px) {
-      .container {
-        margin-left: 50px;
-        margin-right: 50px;
-      }
-    }
+    /* Responsive */
     @media (max-width: 900px) {
-      .services-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
+      .about-us { flex-direction: column; }
+      .carousel-track { gap: 10px; }
+      .service { flex: 0 0 200px; }
     }
     @media (max-width: 600px) {
-      .services-grid {
-        grid-template-columns: 1fr;
-      }
-      .service {
-        flex-direction: column;
-        text-align: center;
-      }
-      .service .icon {
-        margin: 0 0 10px 0;
-      }
+      .service { flex: 0 0 150px; }
     }
   </style>
 </head>
-
 <body>
   <!-- Header -->
   <header>
@@ -258,7 +142,7 @@
   </header>
 
   <!-- Banner -->
-  <section id="banner" class="banner">
+  <section class="banner">
     <h3>Tus tarjetas, tu dinero al instante</h3>
     <p>Vende tus bonos y tarjetas de regalo fácil, rápido y seguro.</p>
     <div class="iconos">
@@ -268,7 +152,6 @@
     </div>
   </section>
 
-  <!-- Contenedor -->
   <div class="container">
     <!-- Quiénes Somos -->
     <section id="nosotros" class="about-us">
@@ -280,81 +163,66 @@
         <img src="imagenes/banner.jpg" alt="Quiénes Somos">
       </div>
     </section>
-   
+
     <!-- Servicios -->
     <section id="servicios" class="services">
       <h2>Servicios</h2>
-      <div class="services-grid">
-        <div class="service">
-          <div class="icon"><img src="imagenes/icono_sodexo.png" alt="Sodexo"></div>
-          <div class="text"><h3>CAMBIO DE BONOS SODEXO, PLUXE POR EFECTIVO.</h3></div>
+
+      <h3>Cambio de Bonos</h3>
+      <div class="carousel">
+        <div class="carousel-track">
+          <div class="service"><img src="imagenes/icono_sodexo.png"><h4>Sodexo / Pluxee</h4></div>
+          <div class="service"><img src="imagenes/icono_bigpass.png"><h4>Big Pass</h4></div>
+          <div class="service"><img src="imagenes/icono_jumbo.png"><h4>Jumbo</h4></div>
+          <div class="service"><img src="imagenes/icono_alkosto.png"><h4>Alkosto</h4></div>
+          <div class="service"><img src="imagenes/icono_exito.png"><h4>Éxito</h4></div>
+          <div class="service"><img src="imagenes/icono_olimpica.png"><h4>Olímpica</h4></div>
         </div>
-        <div class="service">
-          <div class="icon"><img src="imagenes/icono_bigpass.png" alt="Big Pass"></div>
-          <div class="text"><h3>CAMBIO DE BONOS BIG PASS POR EFECTIVO.</h3></div>
+      </div>
+
+      <h3>Cambio de Tarjetas</h3>
+      <div class="carousel">
+        <div class="carousel-track">
+          <div class="service"><img src="imagenes/icono_tarjeta.png"><h4>Crédito (Visa/Mastercard)</h4></div>
+          <div class="service"><img src="imagenes/icono_virtual.png"><h4>Tarjeta Virtual</h4></div>
+          <div class="service"><img src="imagenes/icono_debito.png"><h4>Tarjeta Débito</h4></div>
         </div>
-        <div class="service">
-          <div class="icon"><img src="imagenes/icono_jumbo.png" alt="Jumbo"></div>
-          <div class="text"><h3>CAMBIO DE BONOS JUMBO POR EFECTIVO.</h3></div>
+      </div>
+
+      <h3>Cambio de Cupos</h3>
+      <div class="carousel">
+        <div class="carousel-track">
+          <div class="service"><img src="imagenes/icono_vanti.png"><h4>Cupo Vanti (Gas Natural)</h4></div>
+          <div class="service"><img src="imagenes/icono_sistecredito.png"><h4>Cupo Sistecrédito</h4></div>
+          <div class="service"><img src="imagenes/icono_addi.png"><h4>Cupo Addi</h4></div>
         </div>
-        <div class="service">
-          <div class="icon"><img src="imagenes/icono_alkosto.png" alt="Alkosto"></div>
-          <div class="text"><h3>CAMBIO DE BONOS ALKOSTO POR EFECTIVO.</h3></div>
-        </div>
-        <div class="service">
-          <div class="icon"><img src="imagenes/icono_exito.png" alt="Éxito"></div>
-          <div class="text"><h3>CAMBIO DE BONOS (TARJETA REGALO) ÉXITO.</h3></div>
-        </div>
-        <div class="service">
-          <div class="icon"><img src="imagenes/icono_olimpica.png" alt="Olímpica"></div>
-          <div class="text"><h3>CAMBIO DE BONOS OLÍMPICA.</h3></div>
-        </div>
-        <div class="service">
-          <div class="icon"><img src="imagenes/icono_olimpica.png" alt="Olímpica"></div>
-          <div class="text"><h3>CAMBIO DE BONOS OLÍMPICA.</h3></div>
-        </div>
-        <div class="service">
-          <div class="icon"><img src="imagenes/icono_olimpica.png" alt="Olímpica"></div>
-          <div class="text"><h3>CAMBIO DE BONOS OLÍMPICA.</h3></div>
-        </div>
-        <div class="service">
-          <div class="icon"><img src="imagenes/icono_olimpica.png" alt="Olímpica"></div>
-          <div class="text"><h3>CAMBIO DE BONOS OLÍMPICA.</h3></div>
-        </div>
-        <div class="service">
-          <div class="icon"><img src="imagenes/icono_olimpica.png" alt="Olímpica"></div>
-          <div class="text"><h3>CAMBIO DE BONOS OLÍMPICA.</h3></div>
-        </div>
-        <div class="service">
-          <div class="icon"><img src="imagenes/icono_olimpica.png" alt="Olímpica"></div>
-          <div class="text"><h3>CAMBIO DE BONOS OLÍMPICA.</h3></div>
-        </div>
-        <div class="service">
-          <div class="icon"><img src="imagenes/icono_olimpica.png" alt="Olímpica"></div>
-          <div class="text"><h3>CAMBIO DE BONOS OLÍMPICA.</h3></div>
-        </div>
-        <div class="service">
-          <div class="icon"><img src="imagenes/icono_olimpica.png" alt="Olímpica"></div>
-          <div class="text"><h3>CAMBIO DE BONOS OLÍMPICA.</h3></div>
+      </div>
+
+      <h3>Otros Servicios</h3>
+      <div class="carousel">
+        <div class="carousel-track">
+          <div class="service"><img src="imagenes/icono_domicilio.png"><h4>Servicio a Domicilio</h4></div>
+          <div class="service"><img src="imagenes/icono_oficina.png"><h4>Atención en Oficina</h4></div>
+          <div class="service"><img src="imagenes/icono_almacen.png"><h4>Atención en Almacén</h4></div>
         </div>
       </div>
     </section>
   </div>
 
-   <!-- Testimonios -->
-    <section class="testimonials">
-      <h2>Testimonios</h2>
-      <div class="testimonial">"Gracias a SERFI pude cambiar mis bonos rápidamente y con total confianza." – <b>Cliente satisfecho</b></div>
-      <div class="testimonial">"Un servicio rápido, seguro y transparente. 100% recomendado." – <b>Usuario frecuente</b></div>
-    </section>
-    
-    <!-- Contacto -->
-    <section id="contacto">
-      <h2>Contáctanos</h2>
-      <p>¿Quieres cambiar tus bonos? Escríbenos:</p>
-      <p>Email: <a href="mailto:contacto@serfi.com">contacto@serfi.com</a></p>
-      <p>Teléfono: +57 300 123 4567</p>
-    </section>
+  <!-- Testimonios -->
+  <section class="testimonials">
+    <h2>Testimonios</h2>
+    <div class="testimonial">"Gracias a SERFI pude cambiar mis bonos rápidamente y con total confianza." – <b>Cliente satisfecho</b></div>
+    <div class="testimonial">"Un servicio rápido, seguro y transparente. 100% recomendado." – <b>Usuario frecuente</b></div>
+  </section>
+
+  <!-- Contacto -->
+  <section id="contacto">
+    <h2>Contáctanos</h2>
+    <p>¿Quieres cambiar tus bonos? Escríbenos:</p>
+    <p>Email: <a href="mailto:contacto@serfi.com">contacto@serfi.com</a></p>
+    <p>Teléfono: +57 300 123 4567</p>
+  </section>
 
   <!-- Footer -->
   <footer>
@@ -365,11 +233,8 @@
   <script>
     window.addEventListener("scroll", function() {
       const header = document.querySelector("header");
-      if (window.scrollY > 50) {
-        header.classList.add("shrink");
-      } else {
-        header.classList.remove("shrink");
-      }
+      if (window.scrollY > 50) header.classList.add("shrink");
+      else header.classList.remove("shrink");
     });
   </script>
 </body>
