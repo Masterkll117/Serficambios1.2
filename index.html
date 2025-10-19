@@ -3,169 +3,338 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SERFI – Cambio de Bonos</title>
+  <title>SERFI – Cambia y Avanza</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
   <style>
-    /* Reset básico */
+    /* Reset y base */
     * {
       margin: 0; padding: 0;
       box-sizing: border-box;
-      font-family: 'Trebuchet MS', Arial, sans-serif;
+      transition: all 0.3s ease-in-out;
+      font-family: 'Poppins', 'Trebuchet MS', sans-serif;
     }
     body {
-      background: #101d10
+      background: linear-gradient(120deg, #0a0f0a, #111, #0a0f0a);
+      background-size: 400% 400%;
+      animation: gradientShift 12s ease infinite;
       padding-top: 120px;
-      color: #333;
+      color: #eaeaea;
       line-height: 1.6;
     }
 
-    /* Header fijo */
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Header */
     header {
       position: fixed;
-      top: 0; left: 0;
-      z-index: 1000;
-      width: 100%;
-      background: #000000;
+      top: 0; left: 0; width: 100%;
+      background: rgba(0,0,0,0.9);
+      backdrop-filter: blur(6px);
       display: flex; justify-content: space-between; align-items: center;
       padding: 20px 40px;
       border-bottom: 3px solid #39FF14;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 8px rgba(57,255,20,0.2);
+      z-index: 1000;
       transition: all 0.3s ease;
     }
     header.shrink { padding: 8px 30px; }
     header .logo img {
-      height: 100px; max-width: 100%; transition: height 0.3s ease; border-radius: 10%;
+      height: 90px; border-radius: 10%;
+      animation: floatLogo 5s ease-in-out infinite;
     }
-    header.shrink .logo img { height: 70px; }
+    @keyframes floatLogo {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+
     nav a {
-      margin-left: 5px; padding: 8px 15px;
+      margin-left: 8px; padding: 8px 15px;
       text-decoration: none; border-radius: 5px;
       font-weight: bold;
     }
     .amarillo { background: #39FF14; color: #000; }
     .azul { background: #4b4d4e; color: white; }
     .rojo { background: #25c1e8; color: white; }
+    nav a:hover {
+      background: #39FF14;
+      color: #000;
+      box-shadow: 0 0 10px #39FF14;
+    }
 
     /* Banner */
     .banner {
-      width: 100%; height: 500px;
+      height: 500px;
       color: white;
       display: flex; flex-direction: column;
       justify-content: center; align-items: center;
-      text-align: center; padding: 40px 20px;
-      position: relative;
-      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(5, 5, 5, 0.3)), url(imagenes/Image1.jpg);
-      background-repeat: no-repeat; background-size: cover; background-position: center;
+      text-align: center;
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(10,10,10,0.7)), url(imagenes/Image1.jpg);
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
     }
-    .banner h3 { font-size: 2.5rem; margin-bottom: 15px; }
-    .banner p { font-size: 1.2rem; margin-bottom: 25px; }
-    .iconos { position: absolute; bottom: 10px; right: 10px; display: flex; gap: 10px;  border-radius: 20%;}
-    .iconos img { width: 60px; border-radius: 10%}
+    .banner h3 {
+      font-size: 2.8rem; margin-bottom: 15px;
+      background: linear-gradient(90deg, #39FF14, #25c1e8, #39FF14);
+      -webkit-background-clip: text;
+      color: transparent;
+      background-size: 200% auto;
+      animation: shine 4s linear infinite;
+      text-transform: uppercase;
+    }
+    @keyframes shine {
+      to { background-position: -200% center; }
+    }
+    .banner p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      color: #d5d5d5;
+    }
 
     /* Contenedor */
     .container { margin: 0 auto; max-width: 1200px; padding: 0 20px; }
 
     /* Secciones */
     section {
-      padding: 50px 20px; margin-bottom: 40px;
-      background: #fff; border-radius: 10px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      padding: 60px 20px;
+      margin-bottom: 40px;
+      background: rgba(17,17,17,0.85);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(57,255,20,0.15);
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(57,255,20,0.1);
     }
-    section h2 { margin-bottom: 20px; font-size: 2.5rem; color: #39FF14; text-align: center; }
+    section h2 {
+      text-align: center;
+      color: #39FF14;
+      font-size: 2.2rem;
+      margin-bottom: 25px;
+      text-shadow: 0 0 8px rgba(57,255,20,0.3);
+    }
 
-    /* Quiénes somos */
+    /* Quiénes Somos */
     .about-us { display: flex; flex-wrap: wrap; gap: 30px; align-items: center; }
     .about-us .content, .about-us .image { flex: 1 1 48%; }
-    .about-us img { width: 100%; border-radius: 10px; }
+    .about-us img { width: 100%; border-radius: 10px; box-shadow: 0 0 10px rgba(57,255,20,0.2); }
+    .about-us p { color: #ccc; margin-bottom: 10px; }
+    .acro {
+      text-align: center; margin-top: 20px;
+      color: #39FF14; font-weight: bold;
+    }
 
     /* Servicios */
-    .services { background: #fff; border-radius: 10px; margin: 40px auto; text-align: center; }
-    .services h3 { margin-bottom: 20px; font-size: 1.8rem; color: #333; }
-    .carousel {
-      position: relative; overflow: hidden;
-      width: 100%; margin: 20px 0;
+    .services { text-align: center; }
+    .services h3 {
+      margin-top: 30px;
+      color: #eaeaea;
+      font-size: 1.6rem;
     }
+    .carousel { overflow: hidden; margin-top: 15px; }
     .carousel-track {
-      display: flex; gap: 20px;
+      display: flex; gap: 15px;
       animation: scroll 40s linear infinite;
     }
     .carousel:hover .carousel-track { animation-play-state: paused; }
     .service {
-      flex: 0 0 250px;
-      padding: 20px; background: #f9f9f9;
-      border-radius: 10px; box-shadow: 0 1px 5px rgba(0,0,0,0.1);
-      transition: transform 0.3s, box-shadow 0.3s;
+      flex: 0 0 200px;
+      padding: 15px;
+      background: #1a1a1a;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
     }
     .service:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      transform: scale(1.05);
+      box-shadow: 0 0 12px #39FF14;
     }
-    .service img { width: 60px; margin-bottom: 10px; }
-    .service h4 { font-size: 1rem; color: #333; }
+    .service img { width: 60px; margin-bottom: 8px; }
+    .service h4 { font-size: 1rem; }
 
     @keyframes scroll {
       0% { transform: translateX(0); }
       100% { transform: translateX(-50%); }
     }
 
+    /* Historia / Valores / Visión */
+    .split { display: flex; flex-wrap: wrap; gap: 25px; }
+    .split div {
+      flex: 1 1 30%;
+      background: rgba(15,15,15,0.9);
+      padding: 20px;
+      border-radius: 10px;
+      border: 1px solid rgba(57,255,20,0.1);
+      box-shadow: 0 0 5px rgba(57,255,20,0.1);
+    }
+    .split h3 { color: #39FF14; margin-bottom: 10px; text-shadow: 0 0 8px rgba(57,255,20,0.3); }
+    .split p { font-size: 0.95rem; color: #d5d5d5; }
+
     /* Testimonios */
-    .testimonials { background: #fff8f0; box-shadow: 0px 5px #333; }
-    .testimonial { max-width: 600px; margin: 20px auto; font-style: italic; }
+    .testimonials { background: rgba(13,13,13,0.9); }
+    .testimonial {
+      max-width: 600px; margin: 20px auto;
+      font-style: italic; color: #ccc;
+    }
 
     /* Contacto */
-    #contacto { background: #ffffff; margin-top: 30px; }
+    #contacto {
+      text-align: center;
+      background: rgba(0,0,0,0.9);
+      border-top: 2px solid #39FF14;
+    }
+    #contacto a { color: #39FF14; text-decoration: none; }
+    #contacto p { margin: 8px 0; }
 
     /* Footer */
-    footer { background: #000; color: white; text-align: center; padding: 20px; }
+    footer {
+      background: #000; color: white;
+      text-align: center; padding: 20px;
+      border-top: 2px solid #39FF14;
+      box-shadow: 0 -2px 10px rgba(57,255,20,0.3);
+    }
 
-    /* Responsive */
+    /* WhatsApp */
+    .whatsapp {
+      position: fixed;
+      bottom: 25px; right: 25px;
+      width: 60px; height: 60px;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #39FF14;
+      transition: 0.3s;
+      z-index: 999;
+    }
+    .whatsapp:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 15px #39FF14;
+    }
+
+    /* Scroll reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease-out;
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     @media (max-width: 900px) {
       .about-us { flex-direction: column; }
-      .carousel-track { gap: 10px; }
-      .service { flex: 0 0 200px; }
+      .split { flex-direction: column; }
     }
-    @media (max-width: 600px) {
-      .service { flex: 0 0 150px; }
-    }
+
+    /* Sección tipo CambiamosTusBonos */
+.footer-info {
+  background: #0b0b35; /* azul oscuro elegante */
+  color: #fff;
+  padding: 60px 40px;
+  border-top: 2px solid #39FF14;
+}
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.footer-left img {
+  width: 220px;
+  margin-bottom: 15px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.footer-left img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 12px rgba(57,255,20,0.4);
+}
+.footer-left p {
+  color: #ddd;
+  max-width: 350px;
+  font-size: 0.95rem;
+}
+.footer-divider {
+  width: 2px;
+  height: 180px;
+  background: rgba(255,255,255,0.2);
+}
+.footer-center h4,
+.footer-right h4 {
+  color: #39FF14;
+  margin-bottom: 10px;
+}
+.footer-center ul {
+  list-style: none;
+  padding: 0;
+}
+.footer-center li {
+  margin-bottom: 5px;
+  color: #ccc;
+}
+.footer-right p {
+  margin-bottom: 5px;
+  color: #ccc;
+  font-size: 0.95rem;
+}
+.footer-right a {
+  color: #39FF14;
+  text-decoration: none;
+}
+.footer-right a:hover {
+  text-decoration: underline;
+}
+
+/* Animación sutil al pasar el mouse sobre cada bloque */
+.footer-left:hover,
+.footer-center:hover,
+.footer-right:hover {
+  transform: translateY(-4px);
+  transition: all 0.3s ease;
+}
+
+/* Responsivo */
+@media (max-width: 900px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .footer-divider { display: none; }
+}
   </style>
 </head>
 <body>
-  <!-- Header -->
+
   <header>
-    <div class="logo">
-      <img src="imagenes/logoo1.png" alt="logo serfi">
-    </div>
-    <nav class="cta-buttons">
-      <a href="#servicios" class="btn amarillo">Servicios</a>
-      <a href="#nosotros" class="btn azul">Quiénes Somos</a>
-      <a href="#contacto" class="btn rojo">Contáctanos</a>
+    <div class="logo"><img src="imagenes/logoo1.png" alt="logo serfi"></div>
+    <nav>
+      <a href="#servicios" class="amarillo">Servicios</a>
+      <a href="#nosotros" class="azul">Quiénes Somos</a>
+      <a href="#contacto" class="rojo">Contáctanos</a>
     </nav>
   </header>
 
-  <!-- Banner -->
   <section class="banner">
-    <h3>Tus tarjetas, tu dinero al instante</h3>
-    <p>Vende tus bonos y tarjetas de regalo fácil, rápido y seguro.</p>
-    <div class="iconos">
-      <img src="imagenes/icono1.png" alt="icono1">
-      <img src="imagenes/icono2.png" alt="icono2">
-    </div>
+    <h3>SERFI – Cambia y Avanza</h3>
+    <p>Convertimos tus bonos, tarjetas o cupos en efectivo al instante. Rápido, seguro y sin complicaciones.</p>
   </section>
 
   <div class="container">
-    <!-- Quiénes Somos -->
-    <section id="nosotros" class="about-us">
+    <section id="nosotros" class="about-us reveal">
       <div class="content">
         <h2>Quiénes Somos</h2>
-        <p>Respaldamos el capital y el tiempo de nuestros clientes con seriedad y responsabilidad. Nuestra trayectoria en el sector financiero y comercial ha consolidado nuestro nombre y presencia en diferentes canales, pero es la confianza de nuestra comunidad lo que fortalece a SERFI como una marca estable, reconocida y en constante crecimiento.</p>
+        <p>En SERFI respaldamos el capital y el tiempo de nuestros clientes con seriedad y compromiso. Somos una empresa financiera con 15 años de experiencia, construida sobre confianza y responsabilidad.</p>
+        <p>Nacimos del esfuerzo de José Peña, ejemplo de emprendimiento y resiliencia. Hoy, SERFI es una familia que crece día a día con una meta clara: ayudarte a cambiar y avanzar.</p>
+        <div class="acro">S: Seguridad | E: Eficacia | R: Responsabilidad | F: Futuro | I: Inversión</div>
       </div>
-      <div class="image">
-        <img src="imagenes/banner.jpg" alt="Quiénes Somos">
-      </div>
+      <div class="image"><img src="imagenes/banner.jpg" alt="quienes somos serfi"></div>
     </section>
 
-    <!-- Servicios -->
-    <section id="servicios" class="services">
+    <section id="servicios" class="services reveal">
       <h2>Servicios</h2>
+      <p>Ofrecemos soluciones financieras seguras, rápidas y personalizadas. Entrega inmediata de efectivo el mismo día de tu solicitud.</p>
 
       <h3>Cambio de Bonos</h3>
       <div class="carousel">
@@ -179,61 +348,122 @@
         </div>
       </div>
 
-      <h3>Cambio de Tarjetas</h3>
+      <h3>Tarjetas y Cupos</h3>
       <div class="carousel">
         <div class="carousel-track">
-          <div class="service"><img src="imagenes/icono_tarjeta.png"><h4>Crédito (Visa/Mastercard)</h4></div>
-          <div class="service"><img src="imagenes/icono_virtual.png"><h4>Tarjeta Virtual</h4></div>
-          <div class="service"><img src="imagenes/icono_debito.png"><h4>Tarjeta Débito</h4></div>
+          <div class="service"><img src="imagenes/icono_tarjeta.png"><h4>Crédito / Débito</h4></div>
+          <div class="service"><img src="imagenes/icono_virtual.png"><h4>Virtual / Visa / Mastercard</h4></div>
+          <div class="service"><img src="imagenes/icono_vanti.png"><h4>Cupo Vanti / Addi / Sistecrédito</h4></div>
         </div>
       </div>
 
-      <h3>Cambio de Cupos</h3>
+      <h3>Atención</h3>
       <div class="carousel">
         <div class="carousel-track">
-          <div class="service"><img src="imagenes/icono_vanti.png"><h4>Cupo Vanti (Gas Natural)</h4></div>
-          <div class="service"><img src="imagenes/icono_sistecredito.png"><h4>Cupo Sistecrédito</h4></div>
-          <div class="service"><img src="imagenes/icono_addi.png"><h4>Cupo Addi</h4></div>
+          <div class="service"><img src="imagenes/icono_domicilio.png"><h4>A Domicilio</h4></div>
+          <div class="service"><img src="imagenes/icono_oficina.png"><h4>En Oficina</h4></div>
+          <div class="service"><img src="imagenes/icono_almacen.png"><h4>En Almacén</h4></div>
         </div>
       </div>
+    </section>
 
-      <h3>Otros Servicios</h3>
-      <div class="carousel">
-        <div class="carousel-track">
-          <div class="service"><img src="imagenes/icono_domicilio.png"><h4>Servicio a Domicilio</h4></div>
-          <div class="service"><img src="imagenes/icono_oficina.png"><h4>Atención en Oficina</h4></div>
-          <div class="service"><img src="imagenes/icono_almacen.png"><h4>Atención en Almacén</h4></div>
+    <section class="reveal">
+      <h2>Nuestra Esencia</h2>
+      <div class="split">
+        <div>
+          <h3>Historia</h3>
+          <p>Todo comenzó con José Peña, quien desde joven trabajó incansablemente hasta convertirse en empresario. Su esfuerzo y valores dieron origen a SERFI, una empresa familiar construida sobre honestidad y superación.</p>
+        </div>
+        <div>
+          <h3>Valores</h3>
+          <p>En SERFI la resiliencia es pilar fundamental. Afrontamos retos con compromiso, transparencia y trabajo en equipo. <b>“Cambias y avanzas.”</b></p>
+        </div>
+        <div>
+          <h3>Visión</h3>
+          <p>Queremos expandirnos por todo el país, acercando las finanzas a todos. Creemos en un futuro con igualdad de oportunidades y crecimiento económico compartido.</p>
         </div>
       </div>
     </section>
   </div>
 
-  <!-- Testimonios -->
-  <section class="testimonials">
-    <h2>Testimonios</h2>
-    <div class="testimonial">"Gracias a SERFI pude cambiar mis bonos rápidamente y con total confianza." – <b>Cliente satisfecho</b></div>
-    <div class="testimonial">"Un servicio rápido, seguro y transparente. 100% recomendado." – <b>Usuario frecuente</b></div>
+  <section class="testimonials reveal">
+    <h2>Lo que Dicen Nuestros Clientes</h2>
+    <div class="testimonial">“Gracias a SERFI pude cambiar mis bonos en minutos. Un servicio transparente y confiable.” – <b>Cliente satisfecho</b></div>
+    <div class="testimonial">“Me atendieron con amabilidad y profesionalismo. 100% recomendados.” – <b>Usuario frecuente</b></div>
   </section>
 
-  <!-- Contacto -->
-  <section id="contacto">
+  <section id="contacto" class="reveal">
     <h2>Contáctanos</h2>
-    <p>¿Quieres cambiar tus bonos? Escríbenos:</p>
-    <p>Email: <a href="mailto:contacto@serfi.com">contacto@serfi.com</a></p>
-    <p>Teléfono: +57 300 123 4567</p>
+    <p><b>YESID PEÑA</b></p>
+    <p>📞 302 729 6778 | 322 838 6498</p>
+    <p>🏢 Centro Comercial La Sabana, Cra 19 #12–62 Oficina 009 – Bogotá</p>
+    <p>✉️ <a href="mailto:contacto@serfi.com">contacto@serfi.com</a></p>
+    <p>¡Tu dinero, en tus manos, el mismo día!</p>
   </section>
 
-  <!-- Footer -->
   <footer>
-    <p>&copy; 2025 SERFI – Cambio de Bonos. Todos los derechos reservados.</p>
+    <!-- Sección final estilo CambiamosTusBonos -->
+<section class="footer-info">
+  <div class="footer-container">
+    <!-- Izquierda: logo + descripción -->
+    <div class="footer-left">
+      <img src="imagenes/logoo1.png" alt="SERFI logo">
+      <p>
+        Somos una empresa especialista en el cambio de todo tipo de bonos.
+        Tales como <b>Sodexo, Big Pass, Éxito, Jumbo, Carulla</b> y muchos más por efectivo.
+        Contáctanos y solicita asesoría.
+      </p>
+    </div>
+
+    <!-- Separador vertical -->
+    <div class="footer-divider"></div>
+
+    <!-- Centro: Tipos de Bonos -->
+    <div class="footer-center">
+      <h4>Tipos de Bonos</h4>
+      <ul>
+        <li>Sodexo</li>
+        <li>Big Pass</li>
+        <li>People Pass</li>
+        <li>Éxito</li>
+        <li>Jumbo</li>
+        <li>Centros Comerciales</li>
+      </ul>
+    </div>
+
+    <!-- Derecha: Información de contacto -->
+    <div class="footer-right">
+      <h4>Información de contacto</h4>
+      <p>Cra 19 #12-52</p>
+      <p>C.C. La Sabana, Bodega 009</p>
+      <p>Bogotá, Colombia</p>
+      <p>+57 300 6746605</p>
+      <p><a href="mailto:cambiatusbonos@gmail.com">cambiatusbonos@gmail.com</a></p>
+    </div>
+  </div>
+</section>
   </footer>
 
-  <!-- Script shrink -->
+  <!-- Botón WhatsApp -->
+  <a href="https://wa.me/573027296778" target="_blank" class="whatsapp">
+    <img src="imagenes/whatsapp.png" alt="WhatsApp" width="60" height="60">
+  </a>
+
   <script>
+    // Header dinámico
     window.addEventListener("scroll", function() {
       const header = document.querySelector("header");
       if (window.scrollY > 50) header.classList.add("shrink");
       else header.classList.remove("shrink");
+    });
+
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    window.addEventListener('scroll', () => {
+      reveals.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 100) el.classList.add('active');
+      });
     });
   </script>
 </body>
