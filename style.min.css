@@ -719,3 +719,34 @@ header.shrink .logo img {
     padding: 16px 38px !important;
   }
 }
+
+/* Botón de WhatsApp más grande */
+.whatsapp {
+  width: 85px !important;   /* antes 65px */
+  height: 85px !important;
+  bottom: 35px !important;
+  right: 35px !important;
+  box-shadow: 0 0 18px #39FF14;
+}
+
+/* Imagen interna también escala */
+.whatsapp img {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* Hover (PC) */
+.whatsapp:hover {
+  transform: scale(1.20) !important;
+  box-shadow: 0 0 28px #39FF14;
+}
+
+/* Versión móvil optimizada */
+@media (max-width: 600px) {
+  .whatsapp {
+    width: 75px !important;
+    height: 75px !important;
+    bottom: 25px !important;
+    right: 25px !important;
+  }
+}
