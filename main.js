@@ -1,0 +1,3 @@
+window.addEventListener("scroll",()=>{const h=document.querySelector("header");if(window.scrollY>50)h.classList.add("shrink");else h.classList.remove("shrink")});
+document.querySelectorAll('.carousel').forEach(c=>{c.addEventListener('mouseenter',()=>{const t=c.querySelector('.carousel-track');if(t)t.style.animationPlayState='paused'});
+c.addEventListener('mouseleave',()=>{const t=c.querySelector('.carousel-track');if(t)t.style.animationPlayState='running'})});
